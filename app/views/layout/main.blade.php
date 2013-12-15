@@ -25,27 +25,34 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">{{ Config::get('app.name') }}</a>
+			<a class="navbar-brand" href="{{ url('/') }}">{{ Config::get('app.name') }}</a>
 		</div>
 
 		<div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Login</a></li>
+				@if(!Auth::check())
+					<li><a href="#">Login</a></li>
+				@else
+					<li><a href="#">Groups</a></li>
+					<li><a href="#">Logout</a></li>
+				@endif
 			</ul>
 		</div>
 	</nav>
 
 	<div class="container">
 		<div class="row">
-			<div class="hidden-xs col-sm-2">
+			<nav class="hidden-xs col-sm-2">
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Login</a></li>
-					<li><a href="#">Signup</a></li>
-					<li><a href="#">Groups</a></li>
+					@if(!Auth::check())
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Signup</a></li>
+					@else
+						<li><a href="#">Groups</a></li>
+					@endif
 				</ul>
-			</div>
+			</nav>
 
 			<div class="col-xs-12 col-sm-10">
 				@yield('content')

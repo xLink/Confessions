@@ -2,11 +2,11 @@
 
 @section('content')
 	<div class="jumbotron">
-		<h1>Hi! Welcome to {{ Config::get('app.name') }}!</h1>
+		<h1>Ready to confess?</h1>
 
 		<p>This is a website where anyone can anonymously submit confessions or stories, either to the public feed or in a localized group.</p>
 
-		<p><a class="btn btn-primary btn-lg">Get started</a></p>
+		<p><a class="btn btn-primary btn-lg" href-"#">Get started</a></p>
 	</div>
 
 	<p>This project was born out of the belief of free speech &mdash; submit confessions about anything without fear of retribution.</p>
