@@ -6,18 +6,21 @@
 
 	<title> {{ Config::get('app.name') }} </title>
 
-	<!-- Bootstrap assets -->
-	<link href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/journal/bootstrap.min.css" rel="stylesheet" />
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<!-- Bootswatch: Yeti theme CSS -->
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
 
-	<!-- FontAwesome assets -->
+	<!-- FontAwesome CSS -->
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
 
-	<!-- Custom assets -->
+	<!-- Custom styles -->
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+
+	<!-- JS assets -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
@@ -25,13 +28,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ url('/') }}">{{ Config::get('app.name') }}</a>
+			<a class="navbar-brand" href="{{ route('home') }}">{{ Config::get('app.name') }}</a>
 		</div>
 
 		<div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				@if(!Auth::check())
-					<li><a href="#">Login</a></li>
+					<li class="{{ route_active('login') }}"><a href="{{ route('login') }}">Login</a></li>
 				@else
 					<li><a href="#">Groups</a></li>
 					<li><a href="#">Logout</a></li>
@@ -44,9 +47,9 @@
 		<div class="row">
 			<nav class="hidden-xs col-sm-2">
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#">Home</a></li>
+					<li class="{{ route_active('home') }}"><a class="{{ route_active('home') }}" href="{{ route('home') }}">Home</a></li>
 					@if(!Auth::check())
-						<li><a href="#">Login</a></li>
+						<li class="{{ route_active('login') }}"><a href="{{ route('login') }}">Login</a></li>
 						<li><a href="#">Signup</a></li>
 					@else
 						<li><a href="#">Groups</a></li>
