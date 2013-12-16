@@ -57,7 +57,32 @@
 			</nav>
 
 			<div class="col-xs-12 col-sm-10">
-				@yield('content')
+				<div class="row">
+					@if(Session::has('error'))
+						<div class="alert alert-danger">
+							<strong>Uh-oh!</strong> {{ Session::get('error') }}
+						</div>
+					@endif
+					@if(Session::has('warning'))
+						<div class="alert alert-warning">
+							<strong>Warning...</strong> {{ Session::get('warning') }}
+						</div>
+					@endif
+					@if(Session::has('info'))
+						<div class="alert alert-info">
+							{{ Session::get('info') }}
+						</div>
+					@endif
+					@if(Session::has('success'))
+						<div class="alert alert-success">
+							{{ Session::get('success') }}
+						</div>
+					@endif
+				</div>
+
+				<div class="row">
+					@yield('content')
+				</div>
 			</div>
 		</div>
 	</div>
