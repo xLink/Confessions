@@ -36,8 +36,7 @@
 				@if(!Auth::check())
 					<li class="{{ route_active('login') }}"><a href="{{ route('login') }}">Login</a></li>
 				@else
-					<li><a href="#">Groups</a></li>
-					<li><a href="#">Logout</a></li>
+					<li><a href="{{ route('logout') }}">Logout</a></li>
 				@endif
 			</ul>
 		</div>
