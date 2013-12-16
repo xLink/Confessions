@@ -4,6 +4,8 @@ class SessionsController extends BaseController {
 
 	/**
 	 * Displays a form for a user to login.
+	 *
+	 * @return Response
 	 */
 	public function create()
 	{
@@ -12,6 +14,8 @@ class SessionsController extends BaseController {
 
 	/**
 	 * Attempts to log a user in.
+	 *
+	 * @return Reponse
 	 */
 	public function store()
 	{
@@ -25,6 +29,8 @@ class SessionsController extends BaseController {
 
 	/**
 	 * Logs a user out.
+	 *
+	 * @return Response
 	 */
 	public function destroy()
 	{
