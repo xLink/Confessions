@@ -20,7 +20,7 @@ class SessionsController extends BaseController {
 		if(Auth::attempt($form))
 			return Redirect::intended(route('home'))->withSuccess("You have been successfully logged in.");
 
-		return Redirect::route('login')->withError("The information you provided was invalid.");
+		return Redirect::route('login')->withInput()->withError("The information you provided was invalid.");
 	}
 
 	/**
