@@ -49,7 +49,7 @@
 					<li class="{{ route_active('home') }}"><a class="{{ route_active('home') }}" href="{{ route('home') }}">Home</a></li>
 					@if(!Auth::check())
 						<li class="{{ route_active('login') }}"><a href="{{ route('login') }}">Login</a></li>
-						<li><a href="#">Signup</a></li>
+						<li class="{{ route_active('signup') }}"><a href="{{ route('signup') }}">Signup</a></li>
 					@else
 						<li><a href="#">Groups</a></li>
 					@endif
