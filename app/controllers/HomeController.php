@@ -4,7 +4,10 @@ class HomeController extends BaseController {
 
 	public function showHome()
 	{
-		return View::make('splash');
+		if(!Auth::check())
+			return View::make('splash');
+
+		return Redirect::route('confessions.index');
 	}
 
 }
