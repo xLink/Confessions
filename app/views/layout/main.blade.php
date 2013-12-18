@@ -39,7 +39,7 @@
 					<li class="visible-xs {{ route_active('signup') }}"><a href="{{ route('signup') }}">Signup</a></li>
 				@else
 					<li class="visible-xs {{ route_active(['confessions.index', 'confessions.show', 'confessions.create']) }}"><a href="{{ route('confessions.index') }}">Feed</a></li>
-					<li class="visible-xs {{ route_active(['groups.index', 'groups.show', 'groups.create']) }}"><a href="{{ route('groups.index') }}">Groups</a></li>
+					<li class="visible-xs {{ route_active(['groups.index', 'groups.show', 'groups.create', 'groups.edit']) }}"><a href="{{ route('groups.index') }}">Groups</a></li>
 					<li><a href="{{ route('logout') }}">Logout</a></li>
 				@endif
 			</ul>
@@ -56,7 +56,7 @@
 						<li class="{{ route_active('signup') }}"><a href="{{ route('signup') }}">Signup</a></li>
 					@else
 						<li class="{{ route_active(['confessions.index', 'confessions.show', 'confessions.create']) }}"><a href="{{ route('confessions.index') }}">Feed</a></li>
-						<li class="{{ route_active(['groups.index', 'groups.show', 'groups.create']) }}"><a href="{{ route('groups.index') }}">Groups</a></li>
+						<li class="{{ route_active(['groups.index', 'groups.show', 'groups.create', 'groups.edit']) }}"><a href="{{ route('groups.index') }}">Groups</a></li>
 					@endif
 				</ul>
 			</nav>
