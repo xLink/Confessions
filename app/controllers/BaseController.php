@@ -13,6 +13,8 @@ class BaseController extends Controller {
 		{
 			$this->layout = View::make($this->layout);
 		}
+
+		$this->user = Auth::check() ? Auth::user() : null;
 	}
 
 }
