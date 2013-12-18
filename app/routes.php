@@ -11,3 +11,6 @@ Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store',
 /* User routes */
 Route::get('signup', ['as' => 'signup', 'uses' => 'UsersController@create', 'before' => 'guest']);
 Route::resource('users', 'UsersController', ['only' => ['create', 'store']]);
+
+/* Confessions routes */
+Route::resource('confessions', 'ConfessionsController');

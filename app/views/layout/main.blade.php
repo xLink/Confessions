@@ -46,11 +46,12 @@
 		<div class="row">
 			<nav class="hidden-xs col-sm-2">
 				<ul class="nav nav-pills nav-stacked">
-					<li class="{{ route_active('home') }}"><a class="{{ route_active('home') }}" href="{{ route('home') }}">Home</a></li>
 					@if(!Auth::check())
+						<li class="{{ route_active('home') }}"><a class="{{ route_active('home') }}" href="{{ route('home') }}">Home</a></li>
 						<li class="{{ route_active('login') }}"><a href="{{ route('login') }}">Login</a></li>
 						<li class="{{ route_active('signup') }}"><a href="{{ route('signup') }}">Signup</a></li>
 					@else
+						<li class="{{ route_active('confessions.index') }}"><a href="{{ route('confessions.index') }}">Feed</a></li>
 						<li><a href="#">Groups</a></li>
 					@endif
 				</ul>
