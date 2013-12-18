@@ -2,7 +2,7 @@
 
 use Confessions\Services\Validation\UserValidator;
 
-class UsersController extends \BaseController {
+class UsersController extends BaseController {
 
 	protected $validator;
 
