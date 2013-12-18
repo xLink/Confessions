@@ -1,6 +1,15 @@
 <?php
 
+use Confessions\Services\Validation\ConfessionValidator;
+
 class ConfessionsController extends BaseController {
+
+	protected $validator;
+
+	public function __construct(ConfessionValidator $validator)
+	{
+		$this->validator = $validator;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -21,7 +30,7 @@ class ConfessionsController extends BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('confessions.create');
 	}
 
 	/**
@@ -31,7 +40,18 @@ class ConfessionsController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		$form = Input::only('body', 'anonymous');
+		if(!$this->validator->validates($form))
+		{
+			return Redirect::back()->withErrors($this->validator->errors())->withInput();
+		}
+
+		$this->user->confessions()->create([
+			'body'      => $form['body'],
+			'anonymous' => (bool) $form['anonymous'],
+		]);
+
+		return Redirect::route('confessions.index')->with('success', "Your confession has been posted.");
 	}
 
 	/**
