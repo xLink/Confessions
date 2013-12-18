@@ -17,3 +17,4 @@ Route::get('confessions', ['as' => 'confessions.index', 'uses' => 'ConfessionsCo
 Route::get('confessions/create', ['as' => 'confessions.create', 'uses' => 'ConfessionsController@create', 'before' => 'auth']);
 Route::post('confessions', ['as' => 'confessions.store', 'uses' => 'ConfessionsController@store', 'before' => 'auth']);
 Route::get('confessions/{id}', ['as' => 'confessions.show', 'uses' => 'ConfessionsController@show']);
+Route::delete('confessions/{id}', ['as' => 'confessions.destroy', 'uses' => 'ConfessionsController@destroy', 'before' => 'auth']);

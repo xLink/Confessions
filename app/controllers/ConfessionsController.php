@@ -77,7 +77,13 @@ class ConfessionsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$confession = $this->user->confessions()->find($id);
+		if(!$confession)
+			return Redirect::back()->with('error', "We could not find the specified confession or it did not belong to you.");
+
+		$confession->delete();
+
+		return Redirect::back()->with('success', "Your confession was deleted.");
 	}
 
 }
