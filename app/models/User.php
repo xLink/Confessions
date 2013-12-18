@@ -66,4 +66,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Confession');
 	}
 
+	/**
+	 * Creates an accessor to the related owned groups.
+	 * 
+	 * @return Relation
+	 */
+	public function groups()
+	{
+		return $this->hasMany('Group');
+	}
+
 }
