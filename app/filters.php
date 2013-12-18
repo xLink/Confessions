@@ -57,7 +57,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::home();
+	if (Auth::check()) return Redirect::home()->with('message', "You are already logged in.");
 });
 
 /*
