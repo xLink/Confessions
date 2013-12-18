@@ -13,8 +13,7 @@
 		@foreach($confessions as $confession)
 		<div class="row">
 			<div class="col-xs-12">
-				<blockquote style='margin-left: 13px'>{{{ $confession->body }}}</blockquote>
-				<p style='margin-left: 45px'>&mdash; <i>{{{ ($confession->anonymous) ? 'Anonymous' : $confession->user->username }}}</i>, <a href="{{ route('confessions.show', ['id' => $confession->id]) }}" title="Permalink to this confession">{{ $confession->created_at->diffForHumans() }}</a></p>
+				@include('_partials.confession')
 			</div>
 		</div>
 
