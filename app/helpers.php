@@ -9,9 +9,20 @@
  * @return string        If the user is on the given page, will return
  *                       the active class, otherwise blank string.
  */
-function is_active($page, $class = 'active')
+function is_active($name, $class = 'active')
 {
-	return Request::is($page) ? $class : '';
+	if(!is_array($name))
+		return Request::is($name) ? $class : '';
+	else
+	{
+		foreach($name as $page)
+		{
+			if(Route::is($page))
+				return $class;
+		}
+
+		return '';
+	}
 }
 
 /**
@@ -26,5 +37,16 @@ function is_active($page, $class = 'active')
  */
 function route_active($name, $class = 'active')
 {
-	return Route::currentRouteNamed($name) ? $class : '';
+	if(!is_array($name))
+		return Route::currentRouteNamed($name) ? $class : '';
+	else
+	{
+		foreach($name as $route)
+		{
+			if(Route::currentRouteNamed($route))
+				return $class;
+		}
+
+		return '';
+	}
 }
