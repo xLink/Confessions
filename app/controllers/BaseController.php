@@ -15,6 +15,8 @@ class BaseController extends Controller {
 		}
 
 		$this->user = Auth::check() ? Auth::user() : null;
+
+		View::share('user', $this->user);
 	}
 
 }
