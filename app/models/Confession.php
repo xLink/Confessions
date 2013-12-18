@@ -16,4 +16,14 @@ class Confession extends Eloquent {
 	 */
 	protected $guarded = array('id', 'user_id', 'group_id', 'created_at', 'updated_at');
 
+	/**
+	 * Creates an accessor to the related user.
+	 * 
+	 * @return Relation
+	 */
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
+
 }

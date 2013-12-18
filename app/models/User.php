@@ -56,4 +56,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	/**
+	 * Creates an accessor to the related confessions.
+	 * 
+	 * @return Relation
+	 */
+	public function confessions()
+	{
+		return $this->hasMany('Confession');
+	}
+
 }
