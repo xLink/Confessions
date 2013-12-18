@@ -18,3 +18,12 @@ Route::get('confessions/create', ['as' => 'confessions.create', 'uses' => 'Confe
 Route::post('confessions', ['as' => 'confessions.store', 'uses' => 'ConfessionsController@store', 'before' => 'auth|csrf']);
 Route::get('confessions/{id}', ['as' => 'confessions.show', 'uses' => 'ConfessionsController@show']);
 Route::delete('confessions/{id}', ['as' => 'confessions.destroy', 'uses' => 'ConfessionsController@destroy', 'before' => 'auth|csrf']);
+
+/* Group routes */
+Route::get('groups', ['as' => 'groups.index', 'uses' => 'GroupsController@index']);
+Route::get('groups/create', ['as' => 'groups.create', 'uses' => 'GroupsController@create', 'before' => 'auth']);
+Route::post('groups', ['as' => 'groups.store', 'uses' => 'GroupsController@store', 'before' => 'auth|csrf']);
+Route::get('groups/{id}', ['as' => 'groups.show', 'uses' => 'GroupsController@show']);
+Route::get('groups/{id}/edit', ['as' => 'groups.edit', 'uses' => 'GroupsController@edit', 'before' => 'auth']);
+Route::patch('groups/{id}', ['as' => 'groups.update', 'uses' => 'GroupsController@update', 'before' => 'auth|csrf']);
+Route::delete('groups/{id}', ['as' => 'groups.destroy', 'uses' => 'GroupsController@destroy', 'before' => 'auth|csrf']);
