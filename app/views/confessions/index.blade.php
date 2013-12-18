@@ -6,7 +6,7 @@
 	@if(count($confessions) == 0)
 		<p>There don't seem to be any confessions yet. Maybe you should <a href="{{ route('confessions.create') }}">write one</a>?</p>
 	@else
-		<p>Looking for some juicy gossip?</p>
+		<p>Looking for some juicy gossip? Or maybe you' like to <a href="{{ route('confessions.create') }}">write your own</a> confession.</p>
 
 		<hr />
 
@@ -21,6 +21,6 @@
 		<hr />
 		@endforeach
 
-		<p>Would you like to <a href="{{ route('confessions.create') }}">write your own</a> confession?</p>
+		{{ $confessions->links() }}
 	@endif
 @stop
