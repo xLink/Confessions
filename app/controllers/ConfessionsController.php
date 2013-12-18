@@ -62,7 +62,11 @@ class ConfessionsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$confession = Confession::findOrFail($id);
+
+		return View::make('confessions.show', [
+			'confession' => $confession,
+		]);
 	}
 
 	/**

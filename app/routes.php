@@ -16,3 +16,4 @@ Route::post('signup', ['as' => 'users.store', 'uses' => 'UsersController@store',
 Route::get('confessions', ['as' => 'confessions.index', 'uses' => 'ConfessionsController@index']);
 Route::get('confessions/create', ['as' => 'confessions.create', 'uses' => 'ConfessionsController@create', 'before' => 'auth']);
 Route::post('confessions', ['as' => 'confessions.store', 'uses' => 'ConfessionsController@store', 'before' => 'auth']);
+Route::get('confessions/{id}', ['as' => 'confessions.show', 'uses' => 'ConfessionsController@show']);
