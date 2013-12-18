@@ -4,7 +4,7 @@ class HomeController extends BaseController {
 
 	public function showHome()
 	{
-		return View::make('hello');
+		return View::make('splash');
 	}
 
 }
