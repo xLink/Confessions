@@ -34,8 +34,12 @@
 		<div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				@if(!Auth::check())
+					<li class="visible-xs {{ route_active('home') }}"><a class="{{ route_active('home') }}" href="{{ route('home') }}">Home</a></li>
 					<li class="{{ route_active('login') }}"><a href="{{ route('login') }}">Login</a></li>
+					<li class="visible-xs {{ route_active('signup') }}"><a href="{{ route('signup') }}">Signup</a></li>
 				@else
+					<li class="visible-xs {{ route_active('confessions.index') }}"><a href="{{ route('confessions.index') }}">Feed</a></li>
+					<li class="visible-xs"><a href="#">Groups</a></li>
 					<li><a href="{{ route('logout') }}">Logout</a></li>
 				@endif
 			</ul>
