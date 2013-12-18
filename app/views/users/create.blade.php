@@ -14,7 +14,7 @@
 
 			<div class="form-group">
 				{{ Form::label('email', 'E-mail address') }}
-				{{ Form::text('email', null, ['class' => 'form-control']) }}
+				{{ Form::text('email', null, ['class' => 'form-control', 'maxlength' => 255]) }}
 				{{ $errors->first('email', "<p class='error'>:message</p>") }}
 			</div>
 
