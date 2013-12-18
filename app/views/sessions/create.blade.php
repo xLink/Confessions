@@ -1,9 +1,10 @@
 @extends('layout.main')
 
 @section('content')
-	<div class="col-xs-12 col-sm-4">
-		<h1>Login</h1>
+	<h1>Login</h1>
 
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
 		{{ Form::open(array('route' => 'sessions.store')) }}
 			<div class="form-group">
 				{{ Form::label('email', 'E-mail address') }}
@@ -17,5 +18,6 @@
 
 			{{ Form::submit('Login', ['class' => 'btn btn-submit']) }}
 		{{ Form::close() }}
+		</div>
 	</div>
 @stop
