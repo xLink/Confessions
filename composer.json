@@ -3,6 +3,14 @@
 	"description": "A small app for submitting and reading user confessions, built on Laravel.",
 	"keywords": ["confessions", "laravel"],
 	"license": "MIT",
+	"authors": [
+		{
+			"name": "John Maguire",
+			"email": "contact@johnmaguire.me",
+			"homepage": "http://johnmaguire.me/",
+			"role": "Developer"
+		}
+	],
 	"require": {
 		"laravel/framework": "4.1.*",
 		"barryvdh/laravel-debugbar": "1.*"
