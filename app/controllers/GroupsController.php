@@ -30,7 +30,7 @@ class GroupsController extends BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('groups.create');
 	}
 
 	/**
@@ -40,7 +40,15 @@ class GroupsController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		$form = Input::only('name', 'description');
+		if(!$this->validator->validates($form))
+		{
+			return Redirect::route('groups.create')->withErrors($this->validator->errors())->withInput();
+		}
+
+		$this->user->groups()->create($form);
+
+		return Redirect::route('groups.index')->with('success', "Your group has been created.");
 	}
 
 	/**
