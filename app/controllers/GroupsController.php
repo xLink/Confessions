@@ -1,14 +1,17 @@
 <?php
 
-use Confessions\Services\Validation\GroupValidator;
+use Confessions\Services\Validation\CreateGroupValidator;
+use Confessions\Services\Validation\UpdateGroupValidator;
 
 class GroupsController extends BaseController {
 
-	protected $validator;
+	protected $createValidator;
+	protected $updateValidator;
 
-	public function __construct(GroupValidator $validator)
+	public function __construct(CreateGroupValidator $createValidator, UpdateGroupValidator $updateValidator)
 	{
-		$this->validator = $validator;
+		$this->createValidator = $createValidator;
+		$this->updateValidator = $updateValidator;
 	}
 
 	/**
@@ -41,9 +44,9 @@ class GroupsController extends BaseController {
 	public function store()
 	{
 		$form = Input::only('name', 'description');
-		if(!$this->validator->validates($form))
+		if(!$this->createValidator->validates($form))
 		{
-			return Redirect::route('groups.create')->withErrors($this->validator->errors())->withInput();
+			return Redirect::back()->withErrors($this->createValidator->errors())->withInput();
 		}
 
 		$this->user->groups()->create($form);
@@ -76,7 +79,13 @@ class GroupsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$group = $this->user->groups()->find($id);
+		if(!$group)
+			return Redirect::route('groups.index')->with('error', "We could not find the specified group or it did not belong to you.");
+
+		return View::make('groups.edit', [
+			'group' => $group,
+		]);
 	}
 
 	/**
@@ -87,7 +96,19 @@ class GroupsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$form  = Input::only('description');
+		$group = $this->user->groups()->find($id);
+		if(!$group)
+			return Redirect::back()->with('error', "We could not find the specified group or it did not belong to you.");
+
+		if(!$this->updateValidator->validates($form))
+		{
+			Redirect::back()->withErrors($this->updateValidator->errors())->withInput();
+		}
+
+		$group->update($form);
+
+		return Redirect::route('groups.show', ['id' => $group->id])->with('success', "Your group has been updated.");
 	}
 
 	/**

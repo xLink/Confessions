@@ -1,9 +1,8 @@
 <?php namespace Confessions\Services\Validation;
 
-class GroupValidator extends Validator {
+class UpdateGroupValidator extends Validator {
 
 	static $rules = array(
-		'name'        => 'required|min:4|max:40',
 		'description' => 'max:255',
 	);
 
