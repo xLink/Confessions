@@ -30,7 +30,9 @@ class ConfessionsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('confessions.create');
+		return View::make('confessions.create', [
+			'group' => Input::has('group') ? Group::find(Input::get('group')) : null,
+		]);
 	}
 
 	/**
@@ -40,18 +42,26 @@ class ConfessionsController extends BaseController {
 	 */
 	public function store()
 	{
-		$form = Input::only('body', 'anonymous');
+		$form = Input::only('group', 'body', 'anonymous');
 		if(!$this->validator->validates($form))
 		{
 			return Redirect::back()->withErrors($this->validator->errors())->withInput();
 		}
 
+		$group = ($form['group']) ? Group::find($form['group']) : false;
+		$group = ($group) ? $group->id : null;
+
 		$this->user->confessions()->create([
+			'group_id'  => $group,
 			'body'      => $form['body'],
 			'anonymous' => (bool) $form['anonymous'],
 		]);
 
-		return Redirect::route('confessions.index')->with('success', "Your confession has been posted.");
+		Session::flash('success', "Your confession has been posted.");
+		if($group)
+			return Redirect::route('groups.show', array('id' => $group));
+		else
+			return Redirect::route('confessions.index');
 	}
 
 	/**

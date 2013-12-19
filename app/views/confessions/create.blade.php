@@ -12,6 +12,13 @@
 				{{ $errors->first('body', "<p class='error'>:message</p>") }}
 			</div>
 
+			@if($group)
+			<div class="form-group">
+				{{ Form::label('group', "Post to '" . $group->name . "'?") }}
+				{{ Form::checkbox('group', $group->id, true) }}
+			</div>
+			@endif
+
 			<div class="form-group">
 				{{ Form::label('anonymous', 'Post anonymously?') }}
 				{{ Form::checkbox('anonymous', null, true) }}
