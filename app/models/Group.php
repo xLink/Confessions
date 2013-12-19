@@ -26,4 +26,14 @@ class Group extends Eloquent {
 		return $this->belongsTo('User');
 	}
 
+	/**
+	 * Creates an accessor to the related confessions.
+	 *
+	 * @return Relation
+	 */
+	public function confessions()
+	{
+		return $this->hasMany('Confession');
+	}
+
 }
