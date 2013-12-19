@@ -1,5 +1,5 @@
 {
-	"name": "johnmaguire2013/Confessions",
+	"name": "johnmaguire2013/confessions",
 	"description": "A small app for submitting and reading user confessions, built on Laravel.",
 	"keywords": ["confessions", "laravel"],
 	"license": "MIT",
