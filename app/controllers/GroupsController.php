@@ -98,7 +98,13 @@ class GroupsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$group = $this->user->groups()->find($id);
+		if(!$group)
+			return Redirect::back()->with('error', "We could not find the specified group or it did not belong to you.");
+
+		$group->delete();
+
+		return Redirect::back()->with('success', "Your group was deleted.");
 	}
 
 }
