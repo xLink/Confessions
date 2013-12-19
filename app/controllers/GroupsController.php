@@ -60,7 +60,7 @@ class GroupsController extends BaseController {
 	public function show($id)
 	{
 		$group       = Group::findOrFail($id);
-		$confessions = $group->confessions()->orderBy('created_at', 'DESC')->paginate(10);
+		$confessions = $group->confessions()->orderBy('created_at', 'DESC')->with('user')->paginate(10);
 
 		return View::make('groups.show', [
 			'group'       => $group,

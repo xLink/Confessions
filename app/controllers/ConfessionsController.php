@@ -19,7 +19,7 @@ class ConfessionsController extends BaseController {
 	public function index()
 	{
 		return View::make('confessions.index', [
-			'confessions' => Confession::orderBy('created_at', 'DESC')->paginate(10),
+			'confessions' => Confession::orderBy('created_at', 'DESC')->with('user')->paginate(10),
 		]);
 	}
 
